@@ -1,0 +1,75 @@
+<nav class="navbar">
+  <a class="navbar-brand" href="#">
+    Tranzak
+  </a>
+</nav>
+<div class="container">
+  <ngx-spinner
+    bdOpacity="0.5"
+    bdColor="#ffffff"
+    size="medium"
+    color="#464855"
+    type="pacman"
+    [fullScreen]="false"
+  >
+  </ngx-spinner>
+  <section class="all-transactions" *ngIf="transactions">
+    <div class="row">
+      <div class="col">
+        <p class="transaction-details-title">Transaction details</p>
+      </div>
+    </div>
+    <div class="row" *ngIf="transactions == null">
+      <p class="text-center">No Transactions found!</p>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive" *ngIf="transactions">
+          <table class="table-hover">
+            <thead>
+              <tr>
+                <th>Account No.</th>
+                <th>Details</th>
+                <th>Date</th>
+                <th>Value Date</th>
+                <th>Amount</th>
+                <th class="balance" (click)="sortColumn('balance')">
+                  Balance
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="transaction"
+                *ngFor="let transaction of transactions | paginate: { itemsPerPage: 10, currentPage: p }"
+              >
+                <td>{{transaction.accountNo}}</td>
+                <td>{{transaction.transactionDetails}}</td>
+                <td>{{transaction.date}}</td>
+                <td>{{transaction.valueDate}}</td>
+                <td>
+                  <div
+                    *ngIf="transaction.withdrawalAmt!==''"
+                    [ngClass]="{'trans-type-withdraw':transaction.withdrawalAmt!==''}"
+                  >
+                    -{{transaction.withdrawalAmt}}
+                  </div>
+                  <div
+                    *ngIf="transaction.depositAmt!==''"
+                    [ngClass]="{'trans-type-deposit':transaction.depositAmt!==''}"
+                  >
+                    +{{transaction.depositAmt}}
+                  </div>
+                </td>
+                <td>{{transaction.balance}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center my-3">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

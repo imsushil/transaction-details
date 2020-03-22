@@ -1,0 +1,68 @@
+/*
+  Navbar css
+*/
+nav {
+  background-color: #2c343b;
+}
+.navbar .navbar-brand {
+  color: #fff;
+  transition: letter-spacing 500ms;
+  letter-spacing: 1px !important;
+}
+.navbar .navbar-brand:hover {
+  letter-spacing: 2px !important;
+}
+
+.container {
+  min-height: calc(100vh - 55.6px);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.transaction-title {
+  letter-spacing: 0.05rem;
+  color: #464855;
+  font-weight: 400;
+}
+section.all-transactions {
+  border: none;
+  box-shadow: 0 2px 18px 1px rgba(49, 53, 72, 0.1);
+  border-radius: 0.45rem;
+  padding: 1rem;
+  background-color: #fff;
+  width: 100%;
+}
+section.all-transactions p.transaction-details-title {
+  letter-spacing: 0.05rem;
+}
+section.all-transactions table {
+  width: 100%;
+  text-align: center;
+  color: #6b6f82;
+}
+
+section.all-transactions table tr {
+  border-top: 1px solid #e3ebf3;
+  border-bottom: 1px solid #e3ebf3;
+}
+section.all-transactions table thead tr {
+  border-top: none;
+}
+section.all-transactions table tr td,
+th {
+  padding: 0.6rem 0rem;
+}
+section.all-transactions .trans-type {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 2px 0.5rem;
+}
+section.all-transactions .trans-type-deposit {
+  color: #28d094;
+}
+section.all-transactions .trans-type-withdraw {
+  color: #ff4961;
+}
+section.all-transactions table th.balance {
+  cursor: pointer;
+}
